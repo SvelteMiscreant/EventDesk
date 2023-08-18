@@ -1,0 +1,133 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block css %}
+
+<style>
+  .page-link{
+    background-color: #121212;
+    border: 1px solid #292929;
+    color: cyan
+  }
+</style>
+  
+{% endblock css %}
+
+{% block navlinks %}
+<a class="nav-link active px-3 py-4" aria-current="page" href="/">Home</a>
+<a class="nav-link active px-3 py-4 " aria-current="page" href="{% url 'all_events' %}">Events</a>
+<a class="nav-link active px-3 py-4 " aria-current="page" href="{% url 'all_groups' %}">Groups</a>
+<a class="nav-link active px-3 py-4 " href="{% url 'add_event' %}">Add Events</a>
+<a class="nav-link active px-3 py-4 " href="{% url 'events_list_host' %}">Dashboard </a>
+<a class="nav-link active  px-3 py-4  active-link" href="{% url 'leaderboard' %}" >Leaderboard</a>
+{% endblock navlinks %}
+
+
+{% block container %}
+
+
+<div class="container mt-1 p-1">
+
+
+    <div class="d-flex justify-content-center">
+        <img style="height:50vh" id="hero-illustration" src="{% static 'leaderboard.svg' %}" alt="">
+    </div>
+
+    
+
+
+
+    <div style="text-align: center; " class="d-flex justify-content-center">
+        <h1 class="mt-1 head-title">
+            🏆 Leaderboard
+        </h1>
+    </div>
+    <br>
+    <br>
+
+    {% comment %}
+    <ol class="list-group list-group-numbered ">
+
+        {% for i, j in data.items %}
+
+        <li style="border-color:grey ;" class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold "><a href="{% url 'profile' i %}">{{i}}</a></div>
+              <!-- Cras justo odio -->
+            </div>
+            <span class="badge bg-primary rounded-pill">{{j}}</span>
+        </li>
+          
+        {% endfor %}
+        
+        
+    </ol>
+    {% endcomment %}
+
+
+
+    <div style="background-color: #121212;" class="my-3 p-3 rounded shadow-sm">
+        <h6 class="border-bottom pb-2 mb-0">Ranking</h6>
+
+        {% for i in page_obj %}
+        <div class="d-flex text-muted pt-3">
+      
+          <img src="{{i.0.dp.url}}" class=" flex-shrink-0 me-2 rounded" width="32" height="32" alt="">
+    
+          <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+            <div class="d-flex justify-content-between">
+              <strong class="text-gray-dark"> {{i.0.user.first_name}}</strong>
+              <span style="background-color:cyan !important" class="badge rounded-pill bg-info text-dark">{{i.1}}</span>
+            </div>
+            <a style="text-decoration: none;" href="{% url 'profile' i.0 %}"><span class="d-block">@{{i.0.user.username}}</span></a>
+          </div>
+        </div>
+        {% endfor %}
+
+
+        <!-- <small class="d-block text-end mt-3">
+          <a href="">All Ranks</a>
+        </small> -->
+      </div>
+      {% if page_obj.has_previous or page_obj.has_next %}
+      <small><h5 style="text-align:center; margin-top:4rem; font-size:1rem">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</h5></small>
+        {% else %}
+        
+      {% endif %}
+      
+
+
+      <div class="d-flex justify-content-center mt-3 mb-3">
+
+        <nav style="background: #292929 !important;" aria-label="Page navigation example">
+          <ul class="pagination">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            {% endif %}
+            
+              
+            
+       
+         
+           
+
+            {% if page_obj.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+            {% endif %}
+
+          </ul>
+        </nav>
+      </div>
+
+
+
+</div>
+  
+{% endblock container %}

@@ -1,0 +1,735 @@
+{% extends "base2.html" %}
+{% load static %}
+
+{% block navlinks %}
+<a class="nav-link active px-3 py-4 " aria-current="page" href="/">Home</a>
+<a class="nav-link active px-3 py-4 " aria-current="page" href="{% url 'all_events' %}">Events</a>
+<a class="nav-link active px-3 py-4 " aria-current="page" href="{% url 'all_groups' %}">Groups</a>
+<a class="nav-link active px-3 py-4 " href="{% url 'add_event' %}">Add Events</a>
+<a class="nav-link active px-3 py-4 " href="{% url 'events_list_host' %}">Dashboard </a>
+<a class="nav-link active  px-3 py-4 " href="{% url 'leaderboard' %}">Leaderboard</a>
+{% endblock navlinks %}
+
+{% block container %}
+
+<div class="container mt-4">
+    <div class="container mt-3 p-5">
+        <img style="width:100%; max-height:40vh" src="{% static 'terms_and_conditions.svg' %}" alt="">
+    </div>
+
+    <div class="d-flex justify-content-center mb-4 mt-3">
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button id="t_and_c" class="btn btn-outline-info btn-lg">Terms and Conditions</button>
+            <button id="p_and_p" class="btn btn-outline-info btn-lg">Privacy and Policy</button>
+        </div>
+
+    </div>
+    <div id="tc" class="card px-4 py-4 mb-5">
+        <center>
+            <h2 style="color:cyan; margin-bottom: 2rem;">Terms and Conditions </h2>
+        </center>
+
+        <div class="card-body">
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>Welcome To EventDesk</strong></h3>
+            <h5 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>From GrowerLabs</strong></h5>
+            <p>
+                These terms of service outline the rules and regulations for the use of Event-Desk Website.
+                <br>
+                By accessing this website we assume you accept these terms of service in full. Do not continue to use
+                Event-Desk’s website if you do not accept all of the terms of service stated on this page and bound by
+                the terms contained in this agreement. These terms apply to the entire website and any email or other
+                type of communication between you and Event-desk.
+                <br>
+                The following terminology applies to these Terms of Service, Privacy Statement and Disclaimer Notice and
+                any or all Agreements: "Client", "You" and "Your" refers to you, the person accessing this website and
+                accepting the Company's terms of service. "The Company", "Ourselves", "We", "Our" and "Us", refers to
+                our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves, or either the Client
+                or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to
+                undertake the process of our assistance to the Client in the most appropriate manner, whether by formal
+                meetings of a fixed duration, or any other means, for the express purpose of meeting the Client's needs
+                in respect of provision of the Company's stated services/products, in accordance with and subject to,
+                prevailing law of India. Any use of the above terminology or other words in the singular, plural,
+                capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same.
+
+            </p>
+            <br>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>I. </strong><strong
+                    style="margin-left: 1rem;">License</strong></h3>
+            <p>
+                Unless otherwise stated, GrowerLabs and/or it's licensors own the intellectual property rights for all
+                material on Event-Desk. All intellectual property rights are reserved. You may view and/or print pages
+                from event-desk.herokuapp.com/ for your own personal use subject to restrictions set in these terms of
+                service.
+            </p>
+            <br>
+            <p>You must not:</p>
+            <br>
+            <p style="margin-left: 2rem;">
+                1. Republish material from event-desk.herokuapp.com/
+                <br>
+                2. Sell, rent or sub-license material from event-desk.herokuapp.com/
+                <br>
+                3. Reproduce, duplicate or copy material from event-desk.herokuapp.com/
+            </p>
+            <br>
+            <p>Redistribute content from Event-Desk (unless content is specifically made for redistribution).</p>
+
+            <br>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>II. </strong><strong style="margin-left: 1rem;">
+                    Definitions and Key Terms</strong></h3>
+            <p>
+                For this Terms & Conditions
+            </p>
+            <br>
+            <ul>
+                <li>
+                    <p><strong style="margin-right: 0.3rem;">Company: </strong>
+                        When this policy mentions “company”, “we”, “us” or “our”, it refers to GrowerLabs,
+                        Silchar-788010, Assam, India that is responsible for your information.
+                    </p>
+                </li>
+
+
+                <li>
+                    <p><strong style="margin-right: 0.3rem;">Country: </strong>
+                        Where Event-Desk or the owners/founders of Event-Desk (i.e. GrowerLabs) are based, in this case,
+                        in India.
+                    </p>
+
+                </li>
+                <li>
+                    <p><strong style="margin-right: 0.3rem;">Customer: </strong>
+                        Refers to the company, organization or person that signs up to use the Event-Desk service to
+                        manage the relationships with your customers and service users.
+                    </p>
+
+                </li>
+                <li>
+                    <p><strong style="margin-right: 0.3rem;">Device: </strong>
+                        Any internet connected device such as a phone, tablet, computer or any other device that can be
+                        used to visit Event-Desk and use the services.
+                    </p>
+
+                </li>
+                <li>
+                    <p><strong style="margin-right: 0.3rem;">IP address: </strong>
+                        Every device connected to the internet is assigned a number known as an Internet Protocol (IP)
+                        address. These numbers are usually assigned in geographic blocks. An IP address can often be
+                        used to identify the location from which a device is connecting to the internet.
+                    </p>
+
+                </li>
+                <li>
+                    <p><strong style="margin-right: 0.3rem;">Personnel: </strong>
+                        Refers to those individuals who are employed by Event-desk or its owner GrowerLabs or are under
+                        contract to perform a service on behalf of one of these parties.
+                    </p>
+
+                </li>
+                <li>
+                    <p><strong style="margin-right: 0.3rem;">Personal Data: </strong>
+                        Any information that directly, indirectly or in connection with other information – including a
+                        personal identification number – allows for the identification or identifiability of a natural
+                        person.
+                    </p>
+
+                </li>
+                <li>
+                    <p><strong style="margin-right: 0.3rem;">Service: </strong>
+                        Refers to the service provided by Event-Desk as described in the relative terms (if available)
+                        and on this platform.
+                    </p>
+
+                </li>
+                <li>
+                    <p><strong style="margin-right: 0.3rem;">Third-party Service: </strong>
+                        Refers to advertisers, contest sponsors, promotional or marketing partners and others who
+                        provide our content.
+                    </p>
+
+                </li>
+                <li>
+                    <p><strong style="margin-right: 0.3rem;">Website: </strong>
+                        Event-Desk’s site, accessed by the URL: <a
+                            href="https://event-desk.herokuapp.com">https://event-desk.herokuapp.com</a>
+                    </p>
+
+                </li>
+                <li>
+                    <p><strong style="margin-right: 0.3rem;">You: </strong>
+                        A person or entity that is registered with Event-Desk to use our services.
+                    </p>
+
+                </li>
+
+                <br>
+
+
+
+            </ul>
+
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>III. </strong><strong style="margin-left: 1rem;">
+                    User Comments</strong></h3>
+            <p>
+                1. This Agreement shall begin on the date hereof.
+                <br><br>
+                2. Certain parts of this website offer the opportunity for users to post and exchange opinions,
+                information, material and data ('Comments') in areas of the website. Event-Desk does not screen, edit,
+                publish or review Comments prior to their appearance on the website and Comments do not reflect the
+                views or opinions of Event-Desk, its agents or affiliates. Comments reflect the view and opinion of the
+                person who posts such view or opinion. To the extent permitted by applicable laws Event-Desk and
+                GrowerLabs shall not be responsible or liable for the Comments or for any loss cost, liability, damages
+                or expenses caused and or suffered as a result of any use of and/or posting of and/or appearance of the
+                Comments on this website.
+                <br><br>
+                3. GrowerLabs reserves the right to monitor all Comments and to remove any Comments which it considers
+                in its absolute discretion to be inappropriate, offensive or otherwise in breach of these Terms of
+                Service.
+                <br><br>
+                4. Any feedback, comments, ideas, improvements or suggestions (collectively “Suggestions”) provided by
+                you to us with respect to the service shall remain the sole and exclusive property of us.
+                <br><br>
+                5. You warrant and represent that:
+                <br><br>
+            <p style="margin-left: 1rem;">
+                1. You are entitled to post the Comments on our website and have all necessary licenses and consents to
+                do so;
+                <br>
+                2. The Comments do not infringe any intellectual property right, including without limitation copyright,
+                patent or trademark, or other proprietary right of any third party;
+                <br>
+                3. The Comments do not contain any defamatory, libellous, offensive, indecent or otherwise unlawful
+                material or material which is an invasion of privacy
+                <br>
+                4. The Comments will not be used to solicit or promote business or custom or present commercial
+                activities or unlawful activity.
+            </p>
+            <br>
+            6. You hereby grant to Event-Desk a non-exclusive royalty-free license to use, reproduce, edit and
+            authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.
+
+            </p>
+
+            <br>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>IV. </strong><strong style="margin-left: 1rem;">
+                    Hyperlinking to our Content</strong></h3>
+            <p>
+
+                1. The following organizations may link to our Web site without prior written approval:
+                <br>
+            <p style="margin-left: 1rem;">
+                1. Government agencies;
+                <br>
+                2. Search engines;
+                <br>
+                3. News organizations;
+                <br>
+                4. Online directory distributors when they list us in the directory may link to our Web site in the same
+                manner as they hyperlink to the Web sites of other listed businesses;
+                and
+                <br>
+                5. Systemwide Accredited Businesses except soliciting non-profit organizations, charity shopping malls,
+                and charity fundraising groups which may not hyperlink to our Web site.
+            </p>
+            <br><br>
+            2. These organizations may link to our home page, to publications or to other Web site information so
+            long as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement
+            or approval of the linking party and its products or services; and (c) fits within the context of the
+            linking party's site.
+            <br><br>
+            3. We may consider and approve in our sole discretion other link requests from the following types of
+            organizations:
+            <br>
+            <p style="margin-left: 1rem;">
+                1. commonly-known consumer and/or business information sources such as Chambers of Commerce, American
+                Automobile Association, AARP and Consumers Union;
+                <br>
+                2. dot.com community sites;
+                <br>
+                3. associations or other groups representing charities, including charity giving sites,
+                <br>
+                4. online directory distributors;
+                <br>
+                5. internet portals;
+                <br>
+                6. accounting, law and consulting firms whose primary clients are businesses; and
+                <br>
+                7. educational institutions and trade associations.
+            </p>
+            <br><br>
+            We will approve link requests from these organizations if we determine that: (a) the link would not
+            reflect unfavourably on us or our accredited businesses (for example, trade associations or other
+            organizations representing inherently suspect types of business, such as work-at-home opportunities,
+            shall not be allowed to link); (b)the organization does not have an unsatisfactory record with us; (c)
+            the benefit to us from the visibility associated with the hyperlink outweighs the absence of Event-Desk;
+            and (d) where the link is in the context of general resource information or is otherwise consistent with
+            editorial content in a newsletter or similar product furthering the mission of the organization.
+            These organizations may link to our home page, to publications or to other Web site information so long
+            as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or
+            approval of the linking party and it products or services; and (c) fits within the context of the
+            linking party's site.
+            <br><br>
+            If you are among the organizations listed in paragraph 2 above and are interested in linking to our
+            website, you must notify us by sending an e-mail to growerlabs@gmail.com. Please include your name, your
+            organization name, contact information (such as a phone number and/or e-mail address) as well as the URL
+            of your site, a list of any URLs from which you intend to link to our Web site, and a list of the URL(s)
+            on our site to which you would like to link. Allow 2-3 weeks for a response.
+            Approved organizations may hyperlink to our Web site as follows:
+            <br>
+            <p style="margin-left: 1rem;">
+                1. By use of our corporate name; or
+                <br>
+                2. By use of the uniform resource locator (Web address) being linked to; or
+                <br>
+                3. By use of any other description of our Web site or material being linked to that makes sense within
+                the context and format of content on the linking party's site.
+                No use of GrowerLabs’ logo and Event-Desk’s logo or other artwork will be allowed for linking absent a
+                trademark license agreement.
+
+            </p>
+            </p>
+            <br>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>V. </strong><strong style="margin-left: 1rem;">
+                    Modifications and Updates</strong></h3>
+            <p>
+                We reserve the right to modify, suspend or discontinue, temporarily or permanently, the service to which
+                it connects, with or without notice and without liability to you.
+                <br><br>
+                We may from time to time provide enhancements or improvements to the features/functionality of the
+                service, which may include patches, bug fixes, updates, upgrades or other modifications. Updates may
+                modify or delete certain features and/or functionalities of the service. You agree that we have no
+                obligation to (i) provide any Updates, or (ii) continue to provide or enable any particular features.
+                You further agree that all Updates will be (i) deemed to constitute an integral part of the service, and
+                (ii) subject to the terms and conditions of this Agreement.
+
+            </p>
+            <br>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>VI. </strong><strong style="margin-left: 1rem;">
+                    Iframes</strong></h3>
+            <p>
+                Without prior approval and express written permission, you may not create frames around our Web pages or
+                use other techniques that alter in any way the visual presentation or appearance of our Web site.
+            </p>
+
+            <br>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>VII. </strong><strong style="margin-left: 1rem;">
+                    Content Liability</strong></h3>
+            <p>
+                We shall have no responsibility or liability for any content appearing on your Web site. You agree to
+                indemnify and defend us against all claims arising out of or based upon your Website. No link(s) may
+                appear on any page on your Web site or within any context containing content or materials that may be
+                interpreted as libellous, obscene or criminal, or which infringes, otherwise violates, or advocates the
+                infringement or other violation of any third party rights.
+            </p>
+            <br>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>VIII. </strong><strong
+                    style="margin-left: 1rem;">
+                    Term and Termination</strong></h3>
+            <p>
+
+                This Agreement shall remain in effect until terminated by you or us. We may, in its sole discretion, at
+                any time and for any or no reason, suspend or terminate this Agreement with or without prior notice.
+                This Agreement will terminate immediately in the event that you will fail to comply with any provision
+                of the Agreement. You may also terminate the Agreement by deleting the service and all copies thereof
+                from your device. Upon termination, you shall cease all use of the service and will not limit any of our
+                rights or remedies at law or in equity in case of breach by you (during the term of this Agreement) of
+                any of your obligations under the present Agreement.
+                <br>
+                <br>
+                Indemnification: You agree to indemnify and hold us and our parents GrowerLabs, subsidiaries,
+                affiliates, officers, employees, agents, partners and licensors (if any) harmless from any claim or
+                demand, including reasonable attorney’s fees, due to or arising out of your: (a) use of the service; (b)
+                violation of this Agreement or any law or regulation; or (c) violation of any right of a third-party.
+
+            </p>
+
+            <br>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>IX. </strong><strong style="margin-left: 1rem;">
+                    Reservation of Rights</strong></h3>
+            <p>
+                We reserve the right at any time and in its sole discretion to request that you remove all links or any
+                particular link to our Web site. You agree to immediately remove all links to our Web site upon such
+                request. We also reserve the right to amend these terms of service and its linking policy at any time.
+                By continuing to link to our Web site, you agree to be bound to and abide by these linking terms of
+                service.
+            </p>
+            <br>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>X. </strong><strong style="margin-left: 1rem;">
+                    Severability</strong></h3>
+            <p>
+                If any provision of this Agreement is held to be unenforceable or invalid, such provision will be
+                changed and interpreted to accomplish the objectives of such provision to the greatest extent possible
+                under applicable law and the remaining provisions will continue in full force and effect.
+                <br><br>
+                This Agreement, together with the Privacy Policy and any other legal notices published by us, shall
+                constitute the entire agreement between you and us concerning the services. If any provision of this
+                Agreement is deemed invalid by a court of competent jurisdiction, the invalidity of such provision will
+                not affect the validity of the remaining provisions which shall remain in full force and effect. YOU AND
+                US AGREE THAT ANY CAUSE OF ACTION ARISING OUT OF OR RELATED TO THE SERVICES MUST COMMENCE WITHIN ONE
+                YEAR AFTER THE CLAUSE OF ACTION ACCRUES. OTHERWISE, SUCH CAUSE OF ACTION IS PERMANENTLY BARRED.
+
+            </p>
+            <br>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>XI. </strong><strong style="margin-left: 1rem;">
+                    Removal of links from our website</strong></h3>
+
+            <p>
+                If you find any link on our Web site or any linked web site objectionable for any reason, you may
+                contact us about this. We will consider requests to remove links but will have no obligation to do so or
+                to respond directly to you.
+                <br><br>
+                Whilst we endeavour to ensure that the information on this website is correct, we do not warrant its
+                completeness or accuracy; nor do we commit to ensuring that the website remains available or that the
+                material on the website is kept up to date.
+
+            </p>
+
+            <br>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>XII. </strong><strong style="margin-left: 1rem;">
+                    Disclaimer</strong></h3>
+            <p>
+                To the maximum extent permitted by applicable law, we exclude all representations, warranties and
+                conditions relating to our website and the use of this website (including, without limitation, any
+                warranties implied by law in respect of satisfactory quality, fitness for purpose and/or the use of
+                reasonable care and skill). Nothing in this disclaimer will:
+                <br><br>
+            <p style="margin-left: 1rem;">
+                1. limit or exclude our or your liability for fraud or fraudulent misrepresentation;
+                <br>
+                2. limit any of our or your liabilities in any way that is not permitted under applicable law; or
+                <br>
+                3. exclude any of our or your liabilities that may not be excluded under applicable law.
+            </p>
+            <br>
+            The limitations and exclusions of liability set out in this Section and elsewhere in this disclaimer:
+            (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer
+            or in relation to the subject matter of this disclaimer, including liabilities arising in contract, in
+            tort (including negligence) and for breach of statutory duty.
+            <br><br>
+            To the extent that the website and the information and services on the website are provided free of
+            charge, we will not be liable for any loss or damage of any nature. Without limiting the foregoing, we
+            do not warrant that our service will be uninterrupted, uncorrupted, timely or error-free.
+
+            </p>
+            <br>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>XIII. </strong><strong
+                    style="margin-left: 1rem;">
+                    Contact Us</strong></h3>
+
+            <p>
+                If you have any queries regarding any of our terms, please don’t hesitate to contact us.
+            <ul>
+                <li>Via Email : growerlabs@gmail.com</li>
+                <li>Via Phone Number : +91 9365456645</li>
+                <li>Via Address : Silchar-788010, Assam, India</li>
+            </ul>
+
+
+
+            </p>
+
+        </div>
+
+    </div>
+    <div id="pp" style="display: none;" class="card px-4 py-4 mb-5">
+        <center>
+            <h2 style="color:cyan; margin-bottom: 2rem;">Privacy and Policy </h2>
+        </center>
+
+        <div class="card-body">
+
+            <h4 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>Your privacy is important to us.</strong></h4>
+            <p>
+                It is GrowerLabs' and Event-Desk’s policy to respect your privacy regarding any information we may
+                collect while operating our website. This Privacy Policy applies to <a
+                    href="event-desk.herokuapp.com/">event-desk.herokuapp.com/</a>
+                (hereinafter, "us", "we", or "event-desk.herokuapp.com/"). We respect your privacy and are committed to
+                protecting personally identifiable information you may provide us through the Website. We have adopted
+                this privacy policy ("Privacy Policy") to explain what information may be collected on our Website, how
+                we use this information, and under what circumstances we may disclose the information to third parties.
+                This Privacy Policy applies only to information we collect through the Website and does not apply to our
+                collection of information from other sources.
+                <br><br>
+                This Privacy Policy, together with the Terms & Conditions posted on our Website, set forth the general
+                rules and policies governing your use of our Website. Depending on your activities when visiting our
+                Website, you may be required to agree to additional terms of service.
+                <br>
+                Event-Desk is committed to protecting your privacy. By accessing or using our service, you signify that
+                you have read, understood and agree to our collection, storage, use, and disclosure of your personal
+                information as described in this Privacy Policy.
+
+
+            </p>
+            <br>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>Contents</strong></h3>
+            <p>
+                Following is the list of topics described in the Agreement:
+            <p style="margin-left: 1rem;">
+                1. Definitions and Key Terms
+                <br>
+                2. Personally-Identifying Information
+                <br>
+                3. Security
+                <br>
+                4. Protection of Certain Personally-Identifying Information
+                <br>
+                5. No Cookies
+                <br>
+                6. Privacy Policy Changes
+                <br>
+                7. Contact Us
+
+                <br>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>1. </strong><strong style="margin-left: 1rem;">
+                    Definitions and Key Terms</strong></h3>
+            <br>
+            For this Privacy Policy
+            <br>
+            <ul style="margin-left: 1rem;">
+                <li>Company: When this policy mentions “company”, “we”, “us” or “our”, it refers to GrowerLabs,
+                    Silchar-788010, Assam, India that is responsible for your information.</li>
+                <li>
+                    Country: Where Event-Desk or the owners/founders of Event-Desk (i.e. GrowerLabs) are based, in this
+                    case,
+                    in India.
+                </li>
+                <li>
+                    Customer: Refers to the company, organization or person that signs up to use the Event-Desk service
+                    to
+                    manage the relationships with your customers and service users
+                </li>
+                <li>
+                    Device: Any internet connected device such as a phone, tablet, computer or any other device that can
+                    be
+                    used to visit Event-Desk and use the services.
+                </li>
+                <li>
+                    IP address: Every device connected to the internet is assigned a number known as an Internet
+                    Protocol (IP)
+                    address. These numbers are usually assigned in geographic blocks. An IP address can often be used to
+                    identify the location from which a device is connecting to the internet.
+                </li>
+                <li>
+                    Personnel: Refers to those individuals who are employed by Event-desk or its owner GrowerLabs or are
+                    under
+                    contract to perform a service on behalf of one of these parties.
+                </li>
+                <li>
+                    Personal Data: Any information that directly, indirectly or in connection with other information –
+                    including a personal identification number – allows for the identification or identifiability of a
+                    natural
+                    person.
+                </li>
+                <li>
+                    Service: Refers to the service provided by Event-Desk as described in the relative terms (if
+                    available)
+                    and on this platform.
+                </li>
+                <li>
+                    Third-Party Service: Refers to advertisers, contest sponsors, promotional or marketing partners and
+                    others
+                    who provide our content.
+                </li>
+                <li>
+                    Website: Event-Desk’s site, accessed by the URL: <a
+                        href="https://event-desk.herokuapp.com">https://event-desk.herokuapp.com</a>
+                </li>
+                <li>
+                    You: A person or entity that is registered with Event-Desk to use our services.
+                </li>
+            </ul>
+            </p>
+
+            </p>
+            <br>
+
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>2. </strong><strong style="margin-left: 1rem;">
+                    Personally-Identifying Information</strong></h3>
+            <p>
+                Certain visitors to Event-Desk's websites choose to interact with Event-Desk in ways that require
+                Event-Desk to gather personally-identifying information. The amount and type of information that
+                Event-Desk gathers depends on the nature of the interaction. For example, we ask visitors who leave a
+                comment at https://event-desk.herokuapp.com/ to provide a username and email address.
+            </p>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem">What information do we collect?</h3>
+            <p>We collect information from you when you visit our service, register, start or participate in an event,
+                respond or fill out a form:</p>
+            <br>
+            <ul>
+
+                <li>Name / Username</li>
+                <li>Email addresses</li>
+                <li>Phone numbers</li>
+                <li>Mailing addresses</li>
+                <li>Password</li>
+
+                <br>
+
+
+
+            </ul>
+
+
+
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem">How do we use the information we collect?</h3>
+            <p>Any of the information we collect from you may be used in one of the following ways:</p>
+            <br>
+            <ul>
+
+
+                <li>To personalize your experience (your information helps us to better respond to your personal needs)
+                </li>
+                <li>To improve our service (we continually strive to improve our service offerings based on the
+                    information and feedback we receive from you)</li>
+
+                <li>To administer a contest, promotion, survey or other site feature</li>
+                <li>Mailing addresses</li>
+                <li>To send periodic emails</li>
+
+                <br>
+
+
+
+            </ul>
+
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>3. </strong><strong style="margin-left: 1rem;">
+                    Security</strong></h3>
+            <p>
+                We take precautions to secure your information. We have physical, electronic and managerial procedures
+                to help safeguard, prevent unauthorized access, maintain data security and correctly use your
+                information.
+                <br>
+                The security of your Personal Information is important to us, but remember that no method of
+                transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use
+                commercially acceptable means to protect your Personal Information, we cannot guarantee its absolute
+                security although we can assure you that we take reasonable efforts to curb any misconduct at the
+                earliest.
+
+            </p>
+
+            <br>
+            <h5 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>How do we use your email address? </strong></h5>
+            <p>
+                By submitting your email address on this website, you agree to receive emails from us. You can cancel
+                your participation in any of these email lists at any time by clicking on the opt-out link or other
+                unsubscribe option that is included in the respective email and website. We only send emails to people
+                who have authorized us to contact them, either directly or through a third party. We do not send
+                unsolicited commercial emails because we hate spam as much as you do. By submitting your email address,
+                you also agree to allow us to use your email address for customer audience targeting on sites like
+                Facebook, where we may display custom advertising to specific people who have opted-in to receive
+                communications from us.
+            </p>
+            <br>
+            <h5 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>How long do we keep your information?</strong>
+            </h5>
+            <p>
+                We keep your information only so long as we need it to provide service to you and fulfil the purposes
+                described in this policy. This is also the case with anyone that we share your information with and who
+                carries out services on our behalf. When we no longer need to use your information and there is no need
+                for us to keep it to comply with our legal or regulatory obligations, we will either remove it from our
+                systems or depersonalize it so that we cannot identify you.
+            </p>
+            <br>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>4. </strong><strong style="margin-left: 1rem;">
+                    Protection of Certain Personally-Identifying Information</strong></h3>
+            <p>
+                Event-Desk discloses potentially personally-identifying and personally-identifying information only to
+                those of its employees, contractors and affiliated organizations that (i) need to know that information
+                in order to process it on Event-Desk's behalf or to provide services available at Event-Desk's website,
+                and (ii) that have agreed not to disclose it to others. Some of those employees, contractors and
+                affiliated organizations may be located outside of your home country; by using Event-Desk's website, you
+                consent to the transfer of such information to them. Event-Desk will not rent or sell potentially
+                personally-identifying and personally-identifying information to anyone. Other than to its employees,
+                contractors and affiliated organizations, as described above, Event-Desk discloses potentially
+                personally-identifying and personally-identifying information only in response to a subpoena, court
+                order or other governmental request, or when Event-Desk believes in good faith that disclosure is
+                reasonably necessary to protect the property or rights of Event-Desk, third parties or the public at
+                large.
+                <br><br>
+                If you are a registered user of <a
+                    href="https://event-desk.herokuapp.com/">https://event-desk.herokuapp.com/</a> and have supplied
+                your email address, Event-Desk may occasionally send you an email to tell you about new features,
+                solicit your feedback, or just keep you up to date with what's going on with Event-Desk and our
+                products. We primarily use our blog to communicate this type of information, so we expect to keep this
+                type of email to a minimum. If you send us a request (for example via a support email or via one of our
+                feedback mechanisms), we reserve the right to publish it in order to help us clarify or respond to your
+                request or to help us support other users. Event-Desk takes all measures reasonably necessary to protect
+                against the unauthorized access, use, alteration or destruction of potentially personally-identifying
+                and personally-identifying information.
+                <br><br>
+                The laws of India, excluding its conflicts of law rules, shall govern this Agreement and your use of our
+                service. Your use of our service may also subject to other local, state, national or international laws.
+                <br><br>
+                We reserve the right to transfer information to a third party in the event of a merger or other transfer
+                of all or substantially all of the assets of us or our affiliates. WE DO NOT SELL INFORMATION OF OUR
+                USERS
+
+            </p>
+
+            <br>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>5. </strong><strong style="margin-left: 1rem;">
+                    No Cookies</strong></h3>
+            <p>
+                Event-Desk does not use "Cookies", similar technologies and services provided by others to display
+                personalized content, appropriate advertising and store your preferences on your computer.
+                <br><br>
+                A cookie is a string of information that a website stores on a visitor's computer, and that the
+                visitor's browser provides to the website each time the visitor returns. Event-Desk uses tokens to help
+                Event-Desk identify and track visitors, their usage of <a href="https://event-desk.herokuapp.com/">https://event-desk.herokuapp.com/</a>, and their
+                website access preferences.
+
+            </p>
+            <br>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>6. </strong><strong
+                    style="margin-left: 1rem;">
+                    Privacy Policy Changes</strong></h3>
+            <p>
+
+                Although most changes are likely to be minor, Event-Desk may change its Privacy Policy from time to time (if any), and in event-desk's sole discretion. Event-desk encourages visitors to frequently check this page for any changes to its Privacy Policy. Your continued use of this site after any change in this Privacy Policy will constitute your acceptance of such change
+            </p>
+
+    
+            <br>
+            <h3 style="margin-top: 1rem ; margin-bottom: 1rem"><strong>7. </strong><strong
+                    style="margin-left: 1rem;">
+                    Contact Us</strong></h3>
+
+            <p>
+                If you have any queries regarding any of our terms, please don’t hesitate to contact us.
+            <ul>
+                <li>Via Email : growerlabs@gmail.com</li>
+                <li>Via Phone Number : +91 9365456645</li>
+                <li>Via Address : Silchar-788010, Assam, India</li>
+            </ul>
+
+
+
+            </p>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock container %}
+
+{% block js %}
+<script>
+    document.getElementById('t_and_c').addEventListener('click', () => {
+        document.getElementById("tc").style.display = 'block';
+        document.getElementById("pp").style.display = 'none';
+
+
+
+    })
+    document.getElementById('p_and_p').addEventListener('click', () => {
+        document.getElementById("tc").style.display = 'none';
+        document.getElementById("pp").style.display = 'block';
+
+
+
+    })
+
+</script>
+
+{% endblock js %}

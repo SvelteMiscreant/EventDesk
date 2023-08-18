@@ -1,0 +1,133 @@
+{% extends "base2.html" %}
+{% load static %}
+
+
+{% block css %}
+
+<style>
+    .about-title {
+        color: rgb(179, 131, 226);
+        font-size: 4rem;
+        text-align: center;
+        opacity: 0.7;
+    }
+</style>
+
+{% endblock css %}
+
+{% block navlinks %}
+<a class="nav-link active px-3 py-4 " aria-current="page" href="/">Home</a>
+<a class="nav-link active px-3 py-4 " aria-current="page" href="{% url 'all_events' %}">Events</a>
+<a class="nav-link active px-3 py-4 " aria-current="page" href="{% url 'all_groups' %}">Groups</a>
+<a class="nav-link active px-3 py-4 " href="{% url 'add_event' %}">Add Events</a>
+<a class="nav-link active px-3 py-4 " href="{% url 'events_list_host' %}">Dashboard</a>
+<a class="nav-link active  px-3 py-4 " href="{% url 'leaderboard' %}">Leaderboard</a>
+{% endblock navlinks %}
+
+{% block container %}
+
+
+<div class="container mt-4 px-2 mb-5">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <img style="width: 100%; " src="{% static 'about.svg' %}" alt="">
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="card p-5 mt-5">
+                <p style="font-size:1.2rem; line-height:1.8rem; opacity: 0.9; font-weight: normal; ">
+                    EventDesk is a platform for effectively organizing and Hosting events with just a few clicks. We can
+                    hold multiple events simultaneously, with proper Privacy and Security. The User Interface makes it
+                    easy for both the organizers and participants to properly access the website and hence the events
+                    are held smoothly. To make things better, there is a section for Winner Declaration, where the host
+                    can send personalized emails and goodies (if required) to the winners. The website also acts as a
+                    reminder for upcoming events through its eye catching posters & banners, speaking of which we have
+                    developed our own notification system, subscribing to which, the participants will get notified
+                    about upcoming events via the email address provided by them. Our support system is fast and
+                    reliable, our team will assist you with utmost priority. It is the simplest gateway to connect
+                    Organizers and Participants.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+<br>
+<div class="container p-2 mb-5 mt-2">
+    <h1 style="text-align:center; margin-bottom: 4rem; margin-top: 2rem; color:#03dac5; opacity: 0.9;"
+        class="about-title">Our Partners</h1>
+    <div class="row px-2">
+        <div class="col-lg-3 col-sm-6 col-md-6 mb-3">
+            <a href="https://cloudinary.com/">
+
+                <div style="padding-top: 3.4rem; padding-bottom:3.4rem" class="card px-4 home-card" id="card">
+
+                    <img style="width:100%;" src="{% static 'cloudinary_logo.svg' %}" alt="">
+
+
+                </div>
+            </a>
+
+
+        </div>
+
+
+        <div class="col-lg-3 col-sm-6 col-md-6 mb-3">
+            <a href="https://www.heroku.com/">
+                <div style="padding-top: 2.2rem; padding-bottom:2.2rem" class="card px-4 home-card" id="card">
+
+                    <img style="width:100%;" src="{% static 'heroku-logo.png' %}" alt="">
+    
+    
+                </div>
+            </a>
+
+            
+
+        </div>
+        <div class="col-lg-3 col-sm-6 col-md-6 mb-3">
+            <a href="https://getbootstrap.com/">
+                <div style="padding-top: 2.7rem; padding-bottom: 2.7rem" class="card px-4 home-card" id="card">
+
+                    <img style="width:100%;" src="{% static 'bootstrap-logo.png' %}" alt="">
+    
+    
+                </div>
+
+            </a>
+            
+
+        </div>
+
+        <div class="col-lg-3 col-sm-6 col-md-6 mb-3">
+            <a href="https://www.tiny.cloud/">
+                <div style="padding-top: 2rem; padding-bottom: 2rem" class="card px-4 home-card" id="card">
+
+                    <img style="width:100%; " src="{% static 'tinymce.svg' %}" alt="">
+    
+    
+                </div>
+            </a>
+
+            
+
+        </div>
+    </div>
+
+</div>
+<div class="container p-2 mb-5">
+
+    <h1 style="text-align:center; margin-bottom: 4rem; margin-top: 2rem" class="about-title">From GrowerLabs</h1>
+
+
+    <div class="d-flex justify-content-center ">
+        <img style="width: 400px; max-width: 80vw; " src="{% static 'growerlabs_logo.png' %}" alt="">
+    </div>
+</div>
+
+{% endblock container %}

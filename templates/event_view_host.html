@@ -1,0 +1,141 @@
+{% extends "dashboard-base.html" %}
+
+{% block css %}
+
+<style>
+  .accordion-item{
+    background-color: #121212;
+  }
+  .accordion-button{
+    background-color: #121212;
+    color: #fff;
+  }
+  accordion-button:not(.collapsed) {
+    background-color: #121212 !important;
+  }
+</style>
+  
+{% endblock css %}
+
+
+{% block container %}
+<!-- {{event.unique_id}} -->
+<div class="container mt-3">
+  <div class="d-flex justify-content-center mb-3">
+    <div class="btn-group" role="group" aria-label="Basic outlined example">
+      <a type="button" href="{% url 'winner_declaration' event.unique_id %}" class="btn btn-outline-info">Winner Declaration</a>
+      <a type="button" href="{% url 'send_mail_to_participants' event.unique_id %}" class="btn btn-outline-info">Send mail</a>
+      <a type="button" href="{% url 'responses' event.formparent.pk %}" class="btn btn-outline-info">Responses</a>
+      <a type="button" href="{% url 'add_form_fields' event.formparent.pk %}" class="btn btn-outline-info">Form</a>
+    </div>
+   </div>
+
+
+
+   <div class="card mb-3">
+    <img style="width: 100%; max-height: 50vh; object-fit:cover;" src="{{event.poster.url}}" class="card-img-top" alt="...">
+
+    <div class="d-flex justify-content-center mt-4 p-3 mb-3">
+      <div class="col-6">
+        <div class="d-grid gap-2">
+          <a href="{% url 'edit_event' event.pk %}" class="btn btn-outline-info">
+            Edit Event
+          </a>
+        </div>
+      </div> 
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{event.title}}</h5>
+      <p class="card-text" id="description">{{event.description}}</p>
+      <p class="card-text">{{event.rules}}</p>
+      <p class="card-text"><small class="text-muted">{{event.start_time.date}} - {{event.end_time.date}}</small></p>
+     
+    </div>
+    </div>
+
+
+
+    <br>
+    
+    {% if event.formparent %}
+
+
+
+   <div class="d-flex justify-content-center">
+    <div class="col-6">
+      <div class="d-grid gap-2">
+  
+        <a id="block-btn" class="btn btn-primary" type="button" href="{% url 'add_form_fields' event.formparent.pk %}">Edit Form</a>
+       
+      </div>
+    </div>
+   </div>
+ 
+    
+  {% else %}
+  <div style="border-radius: 8px;" class="card border-primary mb-3 box-shadow">
+    <div class="card-header text-primary mt-2">
+      <h5>Enter The Form Details</h5>
+    </div>
+    <div class="card-body text-primary">
+    
+      
+      <form class="py-2 px-3" enctype="multipart/form-data" method="POST" action="{% url 'add_form_parent' event.pk %}"> {% csrf_token %}
+
+        <div class="mb-3 mt-2">
+          <label for="form_field" class="form-label">Form Title</label>
+          <input type="text" class="form-control" id = "form_field" name="title" required>
+        </div>
+        <div class="mb-3 mt-2">
+          <label for="form_field" class="form-label">Form Description</label>
+          <textarea class="form-control" name="description" id="form_field" rows="3" required></textarea>
+        </div>
+        <br>
+        <div class=" mt-2">
+          <label for="formFile" class="form-label">Upload form banner</label>
+          <input class="form-control" type="file" id="formFile" name="banner">
+        </div>
+        <br>
+        <div class="d-grid gap-2  mt-4">
+          <button style="border-radius: 2px;" type="submit" class="btn btn-primary">Proceed</button>
+
+        </div>
+       
+    
+      </form>
+      
+    </div>
+  </div>
+  {% endif %}
+
+  {% if feedback %}
+    
+  {% for i in feedback %}
+    
+  <h3 class="text-center mt-5 mb-3">Feedbacks</h3>
+  <div class=" p-3">
+
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{i.pk}}" aria-expanded="true" aria-controls="collapseOne">
+           From {{i.prof.user.username}}
+          </button>
+        </h2>
+        <div id="collapse{{i.pk}}" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+           {{i.body}}
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+  </div>
+  {% endfor %}
+  {% endif %}
+
+</div>
+
+
+{% endblock container %}

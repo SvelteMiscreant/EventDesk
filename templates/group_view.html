@@ -1,0 +1,212 @@
+{% extends "base2.html" %}
+{% block css %}
+<style>
+  .modal-dialog{
+      /* width: 1000px; */
+      /* min-width: 80vw; */
+      max-width: 800px ;
+      /* width: 80vw; */
+
+  }
+</style>
+  
+{% endblock css %}
+
+
+{% block navlinks %}
+<a class="nav-link active px-3 py-4 " aria-current="page" href="/">Home</a>
+<a class="nav-link active px-3 py-4 " aria-current="page" href="{% url 'all_events' %}">Events</a>
+<a class="nav-link active px-3 py-4 " aria-current="page" href="{% url 'all_groups' %}">Groups</a>
+<a class="nav-link active px-3 py-4 " href="{% url 'add_event' %}">Add Events</a>
+<a class="nav-link active px-3 py-4 " href="{% url 'events_list_host' %}">Dashboard</a>
+<a class="nav-link active  px-3 py-4 " href="{% url 'leaderboard' %}" >Leaderboard</a>
+{% endblock navlinks %}
+{% block container %}
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-lg-5 col-md-6 col-sm-12 mt-4">
+            <img style="max-width:100%; border-radius:1rem" src="{{group.poster.url}}" class="img-fluid " alt="">
+        </div>
+        <div class="col-lg-7 col-md-6 col-sm-12 mt-4">
+            <div class="card border-dark mb-3 p-3">
+                <div style="font-size: x-large;" class="card-header">{{group.name}}</div>
+                <div class="card-body text-white">
+                  
+                  <p class="card-text mb-3">{{group.description}}</p>
+
+                  <h6>
+                    <span class="badge rounded-pill bg-light text-dark mt-2 mb-1">
+
+                    {% if group.restricted %}
+                    Restricted
+                    {% else %}
+                    Public
+                    {% endif %}
+                    </span>
+                  </h6>
+                  {% if group.creator.user == request.user %}
+
+                  <input style="display: none;" type="text" id="uid" value="{{group.unique_id}}">
+
+                  <br>
+                  <p><small style="margin-bottom: 2rem;">Unique ID:</small></p>
+                 
+                  
+                  <small style="word-break: break-all" class="text-muted mt-3">{{group.unique_id}}</small>
+
+                  <a onclick="myFunction()" href="#">
+                    <i class="far fa-clipboard px-2"></i>
+                  </a>
+
+
+                  {% endif %}
+                  <div class="d-grid gap-2 mt-4">
+                  {% if group.creator.user == request.user %}
+                   <a href="{% url 'add_group_event' group.id %}" class="btn btn-outline-info" >Add event</a>
+                  {% elif group.restricted == False %}
+                  <a href="{% url 'add_group_event' group.id %}" class="btn btn-outline-info">Add event</a>
+                  {% else %}
+                  <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#UniqueID">Add event</button>
+                  {% endif %}
+                  </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row mt-5 mb-5">
+        <div class="card p-4">
+            <div style="font-size: x-large; margin-bottom:2rem" class="card-header">Events</div>
+            <div class="row">
+                {% for event in current_events %}
+                    <div class="col-lg-3 col-sm-6 mb-3">
+                        <a style="text-decoration: none; " href="{% url 'event_home' event.pk %}">
+                            <div style="background-color: #292929; margin-right: 1rem;" class="card" id="card">
+                                <img style="height:200px; object-fit:cover" src="{{event.poster.url}}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h6 class="card-title">{{event.title}}</h6>
+                                  <h6><span class="badge rounded-pill bg-light text-dark mt-2">
+        
+                                    {% if event.result_out %}
+                                    Result Out
+                                    {% elif current_time > event.end_time  %}
+                                    Passed
+                                    {% else %}
+                                    Ongoing
+                                    {% endif %}
+                                    </span>
+                                  </h6>
+                                </div>
+                                <div class="card-footer">
+                                  <small class="text-muted">{{event.start_time.date}}</small>
+                                 
+    
+                                </div>
+                            </div>
+
+                        </a>
+                        
+
+                    </div>
+                    
+                    {% endfor %}
+            </div>
+            <br>
+            {% if past_events %}
+              
+            
+            <h3 class="text-center">Past events</h3>
+            <div class="row">
+                {% for event in past_events %}
+                    <div class="col-lg-3 col-sm-6 mb-3">
+                        <a style="text-decoration: none; " href="{% url 'event_home' event.pk %}">
+                            <div style="background-color: #292929; margin-right: 1rem;" class="card" id="card">
+                                <img style="height:200px; object-fit:cover" src="{{event.poster.url}}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h6 class="card-title">{{event.title}}</h6>
+                                  <h6><span class="badge rounded-pill bg-light text-dark mt-2">
+        
+                                    {% if event.result_out %}
+                                      Passed
+                                    {% else %}
+                                    Ongoing
+                                    {% endif %}
+                                    </span>
+                                  </h6>
+                                </div>
+                                <div class="card-footer">
+                                  <small class="text-muted">{{event.start_time.date}}</small>
+                                 
+    
+                                </div>
+                            </div>
+
+                        </a>
+                        
+
+                    </div>
+                    
+                    {% endfor %}
+
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    
+</div>
+
+
+<!-- modal start -->
+
+<!-- Modal -->
+<div class="modal fade" id="UniqueID" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="UniqueIDLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="UniqueIDLabel">Enter The Unique ID</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-3">
+        <form id="uid_verify" method="POST" class="px-4" action="{% url 'add_group_event' group.id %}">{% csrf_token %}
+
+          <div class="mb-3">
+            <label for="uid" class="form-label">Unique ID</label>
+            <input type="text" id="uid" class="form-control" name="uid" required>
+          </div>
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" form="uid_verify" class="btn btn-info">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- modal end -->
+  
+{% endblock container %}
+
+{% block js %}
+
+<script>
+  function myFunction() {
+      console.log("click");
+      /* Get the text field */
+      var copyText = document.getElementById("uid");
+
+      /* Select the text field */
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+      /* Copy the text inside the text field */
+      navigator.clipboard.writeText(copyText.value);
+
+      console.log(copyText.value);
+  }
+</script>
+  
+{% endblock js %}
